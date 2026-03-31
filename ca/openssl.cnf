@@ -1,0 +1,38 @@
+
+[ req ]
+default_bits        = 2048
+default_md          = sha256
+default_keyfile     = privkey.pem
+distinguished_name  = req_distinguished_name
+req_extensions      = v3_req
+x509_extensions     = v3_ca
+
+[ req_distinguished_name ]
+countryName                     = 国家代码 (2字符)
+countryName_default             = CN
+stateOrProvinceName             = 省/州
+stateOrProvinceName_default     = State
+localityName                    = 城市
+localityName_default            = City
+organizationName                = 组织名称
+organizationName_default        = Organization
+organizationalUnitName          = 组织单位名称
+organizationalUnitName_default  = Unit
+commonName                      = 通用名称
+commonName_max                  = 64
+commonName_default              = localhost
+emailAddress                    = 电子邮件地址
+emailAddress_max                = 64
+emailAddress_default            = admin@example.com
+
+[ v3_req ]
+basicConstraints       = CA:FALSE
+keyUsage               = nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage       = serverAuth
+subjectAltName         = @alt_names
+
+[ v3_ca ]
+basicConstraints       = critical, CA:true
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid:always, issuer:always
+keyUsage               = cRLSign, keyCertSign, digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
